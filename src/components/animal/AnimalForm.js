@@ -54,7 +54,7 @@ export const AnimalForm = props => {
 
   return (
     <form className="animalForm">
-      <h2 className="animalForm__title">New Animal</h2>
+      <h2 className="animalForm__title">Add New Animal</h2>
       <fieldset>
         <div className="form-group">
           <label htmlFor="animalName">Animal name: </label>
@@ -115,7 +115,7 @@ export const AnimalForm = props => {
         }}
         className="btn btn-primary"
       >
-        Save Animal
+        Save
       </button>
     </form>
   );
