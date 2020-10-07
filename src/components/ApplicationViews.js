@@ -4,9 +4,11 @@ import { Home } from "./Home";
 import { AnimalProvider } from "./animal/AnimalProvider";
 import { CustomerProvider } from "./customer/CustomerProvider";
 import { LocationProvider } from "./location/LocationProvider";
+import { EmployeeProvider } from "./employee/EmployeeProvider";
 import { AnimalList } from "./animal/AnimalList";
 import { CustomerList } from "./customer/CustomerList";
 import { LocationList } from ".//location/LocationList";
+import { EmployeeList } from "./employee/EmployeeList";
 
 // import { CustomerCard } from "./customer/CustomerCard";
 import { EmployeeCard } from "./employee/EmployeeCard";
@@ -37,10 +39,11 @@ export const ApplicationViews = props => {
         </Route>
       </CustomerProvider>
       {/* Render the animal list when http://localhost:3000/employees */}
-      <Route path="/employees">
-        <EmployeeCard />
-        <EmployeeCard />
-      </Route>
+      <EmployeeProvider>
+        <Route path="/employees">
+          <EmployeeList />
+        </Route>
+      </EmployeeProvider>
     </>
   );
 };
