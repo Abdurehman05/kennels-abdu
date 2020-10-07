@@ -27,6 +27,11 @@ export const AnimalProvider = props => {
       body: JSON.stringify(animalObj)
     }).then(getAnimals);
   };
+  const getAnimalById = id => {
+    return fetch(
+      `http://localhost:8088/animals/${id}?_expand=location&_expand=customer`
+    ).then(res => res.json());
+  };
 
   /*
         You return a context provider which has the
@@ -39,7 +44,8 @@ export const AnimalProvider = props => {
       value={{
         animals,
         getAnimals,
-        addAnimal
+        addAnimal,
+        getAnimalById
       }}
     >
       {props.children}
