@@ -1,17 +1,25 @@
 import React from "react";
+
 import { Route } from "react-router-dom";
+
 import { Home } from "./Home";
+
 import { AnimalProvider } from "./animal/AnimalProvider";
-import { CustomerProvider } from "./customer/CustomerProvider";
-import { LocationProvider } from "./location/LocationProvider";
-import { EmployeeProvider } from "./employee/EmployeeProvider";
-import { AnimalDetail } from "./animal/AnimalDetail";
-import { AnimalList } from "./animal/AnimalList";
-import { CustomerList } from "./customer/CustomerList";
-import { LocationList } from ".//location/LocationList";
-import { EmployeeList } from "./employee/EmployeeList";
 import { AnimalForm } from "./animal/AnimalForm";
+import { AnimalList } from "./animal/AnimalList";
+import { AnimalDetail } from "./animal/AnimalDetail";
+import { AnimalSearch } from "./animal/AnimalSearch";
+
+import { EmployeeProvider } from "./employee/EmployeeProvider";
 import { EmployeeForm } from "./employee/EmployeeForm";
+import { EmployeeList } from "./employee/EmployeeList";
+import { EmployeeDetail } from "./employee/EmployeeDetail";
+
+import { CustomerProvider } from "./customer/CustomerProvider";
+import { CustomerList } from "./customer/CustomerList";
+
+import { LocationProvider } from "./location/LocationProvider";
+import { LocationList } from ".//location/LocationList";
 
 export const ApplicationViews = props => {
   return (
@@ -24,6 +32,7 @@ export const ApplicationViews = props => {
       <AnimalProvider>
         <Route exact path="/animals">
           <h2>Animals</h2>
+          <AnimalSearch />
           <AnimalList />
         </Route>
       </AnimalProvider>
@@ -79,13 +88,27 @@ export const ApplicationViews = props => {
         </Route>
       </EmployeeProvider>
 
-      <AnimalProvider>
+      <EmployeeProvider>
         <LocationProvider>
           <Route exact path="/employees/create">
             <EmployeeForm />
           </Route>
         </LocationProvider>
-      </AnimalProvider>
+      </EmployeeProvider>
+
+      <EmployeeProvider>
+        <Route exact path="/employees/detail/:employeeId(\d+)">
+          <EmployeeDetail />
+        </Route>
+      </EmployeeProvider>
+
+      <EmployeeProvider>
+        <LocationProvider>
+          <Route path="/employees/edit/:employeeId(\d+)">
+            <EmployeeForm />
+          </Route>
+        </LocationProvider>
+      </EmployeeProvider>
     </>
   );
 };

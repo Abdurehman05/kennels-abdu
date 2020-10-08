@@ -10,6 +10,7 @@ export const AnimalContext = createContext();
  This component establishes what data can be used.
  */
 export const AnimalProvider = props => {
+  const [searchTerms, setSearchTerms] = useState("");
   const [animals, setAnimals] = useState([]);
 
   const getAnimals = () => {
@@ -61,7 +62,9 @@ export const AnimalProvider = props => {
         addAnimal,
         getAnimalById,
         releaseAnimal,
-        updateAnimal
+        updateAnimal,
+        searchTerms,
+        setSearchTerms
       }}
     >
       {props.children}
