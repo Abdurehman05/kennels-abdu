@@ -44,6 +44,16 @@ export const ApplicationViews = props => {
         </Route>
       </AnimalProvider>
 
+      <AnimalProvider>
+        <LocationProvider>
+          <CustomerProvider>
+            <Route path="/animals/edit/:animalId(\d+)">
+              <AnimalForm />
+            </Route>
+          </CustomerProvider>
+        </LocationProvider>
+      </AnimalProvider>
+
       {/* Render the animal list when http://localhost:3000/location */}
 
       <LocationProvider>
