@@ -28,6 +28,12 @@ export const EmployeeProvider = props => {
     }).then(getEmployees);
   };
 
+  const getEmployeelById = id => {
+    return fetch(
+      `http://localhost:8088/employees/${id}?_expand=location`
+    ).then(res => res.json());
+  };
+
   return (
     <EmployeeContext.Provider
       value={{

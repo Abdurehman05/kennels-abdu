@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { EmployeeContext } from "./EmployeeProvider";
 import { EmployeeCard } from "./EmployeeCard";
 import "./Employee.css";
@@ -13,12 +14,22 @@ export const EmployeeList = () => {
     getEmployees();
   }, []);
 
+  const history = useHistory();
+
   return (
-    <div className="employees">
-      {console.log("EmployeesList: Render")}
-      {employees.map(employee => {
-        return <EmployeeCard key={employee.id} employee={employee} />;
-      })}
-    </div>
+    <>
+      <button
+        onClick={() => {
+          history.push("/employees/create");
+        }}
+      >
+        Add Employee
+      </button>
+      <div className="employees">
+        {employees.map(employee => {
+          return <EmployeeCard key={employee.id} employee={employee} />;
+        })}
+      </div>
+    </>
   );
 };
