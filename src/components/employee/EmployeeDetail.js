@@ -9,13 +9,13 @@ export const EmployeeDetail = () => {
   const [location, setLocation] = useState({});
   const [employee, setEmployee] = useState({});
 
-  const { employeelId } = useParams();
+  const { employeeId } = useParams();
   const history = useHistory();
 
   useEffect(() => {
-    console.log("useEffect", employeelId);
-    getEmployeeById(employeelId).then(response => {
-      setEmployee(response.employee);
+    console.log("useEffect", employeeId);
+    getEmployeeById(employeeId).then(response => {
+      setEmployee(response);
       setLocation(response.location);
     });
   }, []);
@@ -24,17 +24,22 @@ export const EmployeeDetail = () => {
     <section className="employee">
       <h3 className="employee__name">{employee.name}</h3>
       <div className="employee__location">Location Name: {location.name}</div>
-      <div className="employee__location">
-        Location Address:{location.address}
-      </div>
+
       <button
         onClick={() => {
-          releaseEmployee(animal.id).then(() => {
+          releaseEmployee(employee.id).then(() => {
             history.push("/employees");
           });
         }}
       >
         Release Employee
+      </button>
+      <button
+        onClick={() => {
+          history.push(`/employees/edit/${employee.id}`);
+        }}
+      >
+        Edit
       </button>
     </section>
   );
