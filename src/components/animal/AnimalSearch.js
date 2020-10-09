@@ -12,7 +12,7 @@ export const AnimalSearch = () => {
 
   return (
     <>
-      Animal search:
+      <h3>Search animal :</h3>
       <input
         type="text"
         className="input--wide"

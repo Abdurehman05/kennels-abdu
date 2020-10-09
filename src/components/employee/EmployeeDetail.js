@@ -13,6 +13,7 @@ export const EmployeeDetail = () => {
   const history = useHistory();
 
   useEffect(() => {
+    console.log("useEffect", employeeId);
     getEmployeeById(employeeId).then(response => {
       setEmployee(response);
       setLocation(response.location);
@@ -23,9 +24,7 @@ export const EmployeeDetail = () => {
     <section className="employee">
       <h3 className="employee__name">{employee.name}</h3>
       <div className="employee__location">Location Name: {location.name}</div>
-      <div className="employee__location">
-        Location Address:{location.address}
-      </div>
+
       <button
         onClick={() => {
           releaseEmployee(employee.id).then(() => {

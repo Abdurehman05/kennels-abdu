@@ -28,10 +28,16 @@ export const EmployeeProvider = props => {
     }).then(getEmployees);
   };
 
-  const getEmployeelById = id => {
+  const getEmployeeById = id => {
     return fetch(
       `http://localhost:8088/employees/${id}?_expand=location`
     ).then(res => res.json());
+  };
+
+  const releaseEmployee = employeeId => {
+    return fetch(`http://localhost:8088/employees/${employeeId}`, {
+      method: "DELETE"
+    }).then(getEmployees);
   };
   const updateEmployee = employee => {
     return fetch(`http://localhost:8088/employees/${employee.id}`, {
@@ -49,8 +55,9 @@ export const EmployeeProvider = props => {
         employees,
         getEmployees,
         addEmployee,
-        getEmployeelById,
-        updateEmployee
+        getEmployeeById,
+        updateEmployee,
+        releaseEmployee
       }}
     >
       {props.children}
